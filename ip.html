@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Lookup - @ishowchhetri</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background: black;
+        }
+
+        /* Centered IP display with gradient background */
+        #ip-display {
+            font-size: 24px;
+            color: white;
+            padding: 20px;
+            background-size: 400% 400%;
+            border-radius: 10px;
+            text-align: center;
+            animation: gradient1 15s ease infinite;
+        }
+
+        /* Different gradient background animations for #ip-display */
+
+        @keyframes gradient1 {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes gradient2 {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes gradient3 {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Gradient 1 */
+        .gradient-1 {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+        }
+
+        /* Developer Info with Clickable Links */
+        #developer {
+            margin-top: 20px;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        #developer a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        #developer a:hover {
+            color: #ffaa00;
+            text-decoration: underline;
+        }
+
+        video, audio {
+            display: none;
+        }
+
+        button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Centered IP Display with gradient background -->
+    <div id="ip-display" class="gradient-1">Loading your IP...</div>
+
+    <!-- Developer Info with Clickable Links -->
+    <div id="developer">
+        𝐃𝐞𝐯 : 𓆩 <a href="https://t.me/mR_oMeNxD" target="_blank">𝑴𝑹 𝑶𝑴𝑬𝑵 ✘𝑫</a> 𓆪 | ✖️! <br>
+        𝐃𝐞𝐯 : <a href="https://t.me/Ishowchhetri" target="_blank">S A N D E E P</a>
+    </div>
+
+    <!-- Video and Music Elements -->
+    <video id="video-bg" muted loop>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Play Button -->
+    <button onclick="playMedia()">Play Video and Music</button>
+
+    <script>
+        function playMedia() {
+            var video = document.getElementById('video-bg');
+            var audio = document.getElementById('bg-music');
+            video.style.display = 'block';  // Make video visible when playing
+            video.play();
+            audio.play();
+        }
+
+        // Fetch IP address using the ipify API
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                // Display the IP in the center of the page
+                document.getElementById('ip-display').textContent = 'Your IP: ' + data.ip;
+            })
+            .catch(error => {
+                document.getElementById('ip-display').textContent = 'Error fetching IP';
+            });
+    </script>
+
+</body>
+</html>
